@@ -4,30 +4,48 @@ $height = 90;
 
 var_dump($height);
 
-if ($height === 91){
-  echo '身長は' . $height .'cmです';
-}else{
-  echo '身長は' . $height .'cmではありません';
+// if ($height >= 91){
+//   echo '身長は' . $height .'cmです';
+// }
+
+// if ($height <= 90){
+//   echo '身長は' . $height .'cmになります';
+// }
+
+if ($height !== 90){
+  echo '身長は90cmではありません';
 }
 
-$signal = 'blue';
 
-if ($signal === 'red'){
-  echo '止まれ';
-}else if ($signal == 'yellow'){
-  echo '一時停止';
-}else{
-  echo '進む';
+// データが入っているかどうか
+// isset empty is_null
+
+$test = '1';
+
+if (!empty($test)){
+  echo '中身は空でない';
 }
 
-echo '<br>';
+// ANDとOR
+// &&
+// ||
 
-$speed = 80;
+$signal_1 = 'red';
+$signal_2 = 'yellow';
 
-if ($signal === 'blue'){
-  if ($speed >= 80){
-    echo 'スピード違反です';
-  }
+if ($signal_1 === 'red' || $signal_2 === 'blue'){
+  echo '赤です';
 }
+
+// 三項演算子
+// if else
+// 条件　? 真　: 偽
+
+$math = 90;
+
+$comment = $math > 80 ? 'good' : 'not good';
+
+echo $comment;
+
 
 ?>

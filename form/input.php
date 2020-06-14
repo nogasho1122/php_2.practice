@@ -1,9 +1,17 @@
 <?php
 
+header('X-FRAME-OPTIONS:DENY');
 
-echo '<pre>';
-var_dump($_POST);
-echo '</pre>';
+function h($str){
+
+  return htmlspecialchars($str,ENT_QUOTES, 'utf-8');
+}
+
+
+// echo '<pre>';
+// var_dump($_POST);
+// echo '</pre>';
+
 // スーパーグローバル変数 php 9種類
 // 連想配列
 
@@ -31,10 +39,10 @@ if (!empty($_POST['btn_submit'])){
 
 <form method="POST" action= "input.php">
 名前
-<input type= "text" name="your_name" value="<?php echo $_POST['your_name']; ?>"></input>
+<input type= "text" name="your_name" value="<?php echo h($_POST['your_name']); ?>"></input>
 <br>
 メールアドレス
-<input type = "email" name="email" value="<?php echo $_POST['email']; ?>">
+<input type = "email" name="email" value="<?php echo h($_POST['email']); ?>">
 
 <input type ="submit" name= "btn_confirm" value="確認する">
 
@@ -46,15 +54,15 @@ if (!empty($_POST['btn_submit'])){
 
 <form method="POST" action= "input.php">
 名前
-<?php echo $_POST['your_name']; ?>
+<?php echo h($_POST['your_name']); ?>
 <br>
 メールアドレス
-<?php echo $_POST['email']; ?>
-
+<?php echo h($_POST['email']); ?>
+<br>
 <input type ="submit" name="back" value="戻る">
 <input type ="submit" name= "btn_submit" value="送信する">
-<input type ="hidden" name = "your_name" value="<?php echo $_POST['your_name']; ?>">
-<input type ="hidden" name = "email" value="<?php echo $_POST['email']; ?>">
+<input type ="hidden" name = "your_name" value="<?php echo h($_POST['your_name']); ?>">
+<input type ="hidden" name = "email" value="<?php echo h($_POST['email']); ?>">
 
 </form>
 

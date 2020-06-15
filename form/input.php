@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require 'validation.php';
+
 header('X-FRAME-OPTIONS:DENY');
 
 function h($str){
@@ -21,8 +23,9 @@ echo '</pre>';
 // input.php　のみ
 
 $pageFlag = 0;
+$error = validation($_POST);
 
-if (!empty($_POST['btn_confirm'])){
+if (!empty($_POST['btn_confirm']) && empty($error)){
   $pageFlag = 1;
 }
 
@@ -46,8 +49,15 @@ if (!isset($_SESSION['csrfToken'])) {
 
 $token = $_SESSION['csrfToken'];
 
-
 ?>
+
+<?php if (!empty($_POST['btn_confirm']) && !empty($error)): ?>
+<ul>
+<?php foreach ($error as $value): ?>
+<li><?php echo $value; ?></li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
 
 <form method="POST" action= "input.php">
 名前
@@ -79,6 +89,7 @@ $token = $_SESSION['csrfToken'];
 <br>
 注意事項のチェック
 <input type= "checkbox" name="caution" value="1">注意事項にチェックする
+<br>
 
 
 <input type ="submit" name= "btn_confirm" value="確認する">

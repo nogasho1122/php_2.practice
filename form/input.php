@@ -68,51 +68,56 @@ $token = $_SESSION['csrfToken'];
 </ul>
 <?php endif; ?>
 
-<div class="container"></div>
-<div class="row">
-  <div class="col-md-6">
-    <form method="POST" action= "input.php">
-    <div class ="form-group">
-      <label for = "your_name">氏名</label>
-      <input type= "text" class ="form-control" id="your_name" name="your_name" value="<?php echo h($_POST['your_name']); ?>" required></input>
-    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form method="POST" action= "input.php">
+      <div class ="form-group">
+        <label for = "your_name">氏名</label>
+        <input type= "text" class ="form-control" id="your_name" name="your_name" value="<?php echo h($_POST['your_name']); ?>" required></input>
+      </div>
+      <div class ="form-group">
+        <label for = "email">メールアドレス</label>
+        <input type= "text" class ="form-control" id="email" name="email" value="<?php echo h($_POST['email']); ?>" required></input>
+      </div>
+      <div class ="form-group">
+        <label for = "url">ホームページ</label>
+        <input type= "text" class ="form-control" id="url" name="url" value="<?php echo h($_POST['url']); ?>" required></input>
+      </div>
+      <div class ="form-check form-check-inline">性別
+        <input class= "form-check-input" id="gender1" type= "radio" name ="gender" value="male"></input>
+        <label class ="form-check-label" for="gender1">男性</label>
+        <input class= "form-check-input" id="gender2" type= "radio" name ="gender" value="female"></input>
+        <label class ="form-check-label" for="gender2">女性</label>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="age">年齢</label>
+        <select class="form-control" id="age" name ="age">
+          <option value="">~から選択してください</option>
+          <option value="1">~19歳まで</option>
+          <option value="2">20歳~19歳まで</option>
+          <option value="3">30歳~19歳まで</option>
+          <option value="4">40歳~19歳まで</option>
+          <option value="5">50歳~19歳まで</option>
+          <option value="6">60歳~</option>
+        </select>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="age">お問い合わせ内容</label>  
+        <textarea class="form-control" id="contact" row="3" name= "contact" value="<?php echo h($_POST['contact']); ?>"></textarea>
+      </div>
+      <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="caution">
+      <label class="form-check-label" for="caution">注意事項にチェックする</label>
+      </div>
+      <br>
+      <input class="btn btn-info" type ="submit" name= "btn_confirm" value="確認する">
+      <input type ="hidden" name="csrf" value="<?php echo $token; ?>">
+    </div><!-- .md6 -->
   </div>
 </div>
-
-
-</div>
-<br>
-メールアドレス
-<input type= "email" name="email" value="<?php echo h($_POST['email']); ?>">
-<br>
-ホームページ
-<input type= "url" name ="url" value="<?php echo h($_POST['url']); ?>">
-<br>
-性別
-<input type= "radio" name ="gender" value="0">男性
-<input type= "radio" name ="gender" value="1">女性
-<br>
-年齢
-<select name ="age">
-  <option value="">~から選択してください</option>
-  <option value="1">~19歳まで</option>
-  <option value="2">20歳~19歳まで</option>
-  <option value="3">30歳~19歳まで</option>
-  <option value="4">40歳~19歳まで</option>
-  <option value="5">50歳~19歳まで</option>
-  <option value="6">60歳~</option>
-</select>
-<br>
-お問い合わせ内容
-<textarea name= "contact" value="<?php echo h($_POST['contact']); ?>"></textarea>
-<br>
-注意事項のチェック
-<input type= "checkbox" name="caution" value="1">注意事項にチェックする
-<br>
-
-
-<input type ="submit" name= "btn_confirm" value="確認する">
-<input type ="hidden" name="csrf" value="<?php echo $token; ?>">
 
 </form>
 

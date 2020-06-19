@@ -11,6 +11,7 @@ function validation($data){
   if (empty($data['email']) || !filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
     $error[] = 'メールアドレスは正しい形式で入力してください';
   }
+  
   // url
   if (!empty($data['url'])){
     if (!filter_var($data['url'], FILTER_VALIDATE_URL)){

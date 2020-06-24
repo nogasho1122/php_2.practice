@@ -44,6 +44,6 @@ function validation($data){
 }
 
 
-print "docker";
+print "java";
 
 ?>
